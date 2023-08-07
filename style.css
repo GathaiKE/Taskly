@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    background-color: pink;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.appCard{
+    background-color: purple;
+    color: white;
+    width: 600px;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-area{
+    padding: 5px;
+    width: 100%;
+}
+input{
+    padding: 5px;
+    width: 80%;
+    font-size: large;
+}
+input:focus{
+    outline: none;
+}
+#add-btn{
+    background-color: green;
+    color:white;
+    padding: 2px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 5%;
+}
+#add-btn:active{
+    border: none;
+    color: green;
+    background-color: white;
+}
+ul{
+    text-decoration: none;
+    list-style: none;
+    font-size: large;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    margin: 0 auto;
+    overflow-y: auto;
+}
+h1{
+    color: Cyan;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.task{
+    display: flex;
+    color: aqua;
+    gap: 5px;
+    align-items: center;
+}
+
+.subtask{
+    display: flex;
+    justify-content: space-between;
+    color: aqua;
+    width: 100%;
+}
+
+#delete-btn,#edit-btn{
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+}
+#delete-btn{
+    color:white;
+    background-color: red;
+    border: 1px solid red;
+}
+#delete-btn:active{
+    color: red;
+    background:white;
+    border: 1px solid red;
+}
+#edit-btn:active{
+    background-color: gray;
+    color: white;
+}
+
+.taskContainer{
+    display: flex;
+}
+
+.complete{
+    text-decoration: line-through;
+    color: green;
+}
