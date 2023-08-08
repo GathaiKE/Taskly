@@ -1,10 +1,14 @@
 let input=document.getElementById('new-task')
 let list=document.getElementsByClassName('task-list')[0]
 let submitBtn = document.querySelector('#submit-btn')
+let deleteBtn = document.querySelector('#delete-btn')
+let updateBtn = document.querySelector('#edit-btn')
+
 
 const action = 'Add Task' || 'Update Task'
 
-let tasks=[{description:"Hello world",complete:false}]
+let tasks = []
+
 
 function addTask(){
 
@@ -16,7 +20,6 @@ function addTask(){
         input.value=" "
     }
     
-
     showTasks()
 }
 
@@ -70,22 +73,32 @@ const completeTask=(taskDescription)=>{
 }
 
 const triggerUpdate=(selectedTask)=>{
-    let task=(tasks.filter(t=>t.description===selectedTask))
-    input.value=(task[0].description)
+    let task=(tasks.find(t=>t.description===selectedTask))
+    input.value=(task.description)
     submitBtn.textContent="Update Task"
+    submitBtn.removeEventListener('click',()=>{
+        addTask()
+    })
     submitBtn.addEventListener('click',()=>{
-        submitBtn.textContent==="Update Task"?updateTask(task):addTask()
+        updateTask(task)
     })
 }
 
-let updateTask=(taskForUpdate)=>{
+let updateTask=(task)=>{
     let updatedTask=input.value.trim()
-    updatedTask !== ''?taskForUpdate=updatedTask:''
+    if(updatedTask !== ''){
+        console.log(`Old task :${task.description}, New Task ${updatedTask}`);
+        task.description = updatedTask
+        submitBtn.textContent="Add Task"
+        submitBtn.removeEventListener('click',updateTask)
+        submitBtn.addEventListener('click',addTask)
+    }
+
     showTasks()
 }
 
-submitBtn.addEventListener('click',()=>{
-    submitBtn.textContent==="Update Task"?updateTask():addTask()
-})
+if(submitBtn.textContent === "Add Task"){
+    submitBtn.addEventListener('click',()=>addTask())
+}
 
 showTasks()
