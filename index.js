@@ -8,8 +8,11 @@ function addTask(){
     let newTask=input.value
     console.log(newTask);
 
-    tasks.push({description:newTask,complete:false})
-    input.value=" "
+    if(newTask !== '' && newTask!== ' '){
+        tasks.push({description:newTask,complete:false})
+        input.value=" "
+    }
+    
 
     showTasks()
 }
@@ -27,7 +30,7 @@ let showTasks=()=>{
                         <li>${task.description}</li>
                         <span id="buttons">
                             <button id="delete-btn" onClick="deleteTask('${task}')">Delete</button>
-                            <button id="edit-btn" onClick="updateTask()">Edit</button>
+                            <button id="edit-btn" onClick="updateTask('${task.description}')">Edit</button>
                         </span>
                     </div>
                 </div>
@@ -48,13 +51,25 @@ const completeTask=(taskDescription)=>{
     let task=tasks.find(task=>task.description===taskDescription)
     if(task){
         task.complete=!task.complete
-        console.log(task.complete);
-        task.classList.add('complete')
+
+        let htmlElement=document.querySelector(`[data-description="${task.description}"]`)
+        if(htmlElement){
+            if(taskDescription){
+                htmlElement.classList.add('complete')
+                console.log('added');
+            } else{
+                htmlElement.classList.remove('compete')
+                console.log('removed');
+            }
+        }
     }
     showTasks()
 }
 
-
+const updateTask=(selectedTask)=>{
+    let task=(tasks.filter(t=>t.description===selectedTask))
+    input.value=(task[0].description)
+}
 
 
 showTasks()
