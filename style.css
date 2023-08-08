@@ -36,7 +36,7 @@ input{
 input:focus{
     outline: none;
 }
-#add-btn{
+#submit-btn{
     background-color: green;
     color:white;
     padding: 2px;
@@ -45,7 +45,7 @@ input:focus{
     border: none;
     border-radius: 5%;
 }
-#add-btn:active{
+#submit-btn:active{
     border: none;
     color: green;
     background-color: white;
